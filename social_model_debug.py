@@ -209,7 +209,16 @@ class SocialModel():
             self.output_w = tf.get_variable("output_w", [self.rnn_size, self.output_size], initializer=tf.truncated_normal_initializer(stddev=0.01))
             self.output_b = tf.get_variable("output_b", [self.output_size], initializer=tf.constant_initializer(0.01))
             
- 
+    def getSocialTensor(self, grid_frame_data, output_states):
+        '''
+        Computes the social tensor for all the maxNumPeds in the frame
+        params:
+        grid_frame_data : A tensor of shape MNP x MNP x (GS**2)
+        output_states : A list of tensors each of shape 1 x RNN_size of length MNP
+        '''
+        # Create a zero tensor of shape MNP x (GS**2) x RNN_size
+        social_tensor = tf.zeros([self.args.maxNumPeds, self.grid_size*self.grid_size, self.rnn_size], name="social_tensor")
+        
         
             
     """

@@ -20,7 +20,7 @@ class SocialModel():
         self.maxNumPeds=40
         self.embedding_size=64
         self.output_size = 5
-        self.learning_rate=0.0001
+        self.learning_rate=0.003
         self.grad_clip=0.5
         '''
         model
@@ -121,7 +121,7 @@ class SocialModel():
                 #print("Pedestrian Number", ped)
                 pedID = current_frame_data[ped, 0]
                 with tf.name_scope("extract_input_ped"):
-                    self.spatial_input = tf.slice(current_frame_data, [ped, 1], [1, 2])
+                    self.  = tf.slice(current_frame_data, [ped, 1], [1, 2])
                     # Tensor of shape (1,2)
                     # Extract x and y positions of the current ped
                     self.tensor_input = tf.slice(social_tensor, 
